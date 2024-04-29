@@ -7,6 +7,9 @@ import { checkArray, sendEmail } from '../util/util.js'
 import { userAttemptsModel } from '../models/user_attempts.js'
 import { nanoid } from 'nanoid'
 
+const attem=2;
+const key='eoifkjefeu6193611986';
+
 
 const login = async (req, res, next) => {
 
@@ -40,7 +43,7 @@ const login = async (req, res, next) => {
 
     const currentAttempts = await userAttemptsModel.findOne({username: username})
 
-    if (currentAttempts.attempts > process.env.MAX_ATTEMPTS) {
+    if (currentAttempts.attempts > attem) {
         res.status(500).json({status: "blocked", message: "Your account has been blocked, please check email."})
         return next()
     }
@@ -55,7 +58,7 @@ const login = async (req, res, next) => {
     isValidPattern = checkArray(existingUser.pattern, pattern, true)
 
     if (!isValidPassword || !isValidPattern) {
-        if (currentAttempts.attempts === Number(process.env.MAX_ATTEMPTS)) {
+        if (currentAttempts.attempts === Number(attem)) {
             await userAttemptsModel.findOneAndUpdate({username: username}, {attempts: currentAttempts.attempts+1, token: nanoid(32)}).catch(err => console.log(err))
             //console.log("sending email entered")
             sendEmail(currentAttempts.email)
@@ -65,7 +68,7 @@ const login = async (req, res, next) => {
         return next()
     }
 
-    try { token = jwt.sign({userId: existingUser.id, email: existingUser.email}, process.env.TOKEN_KEY) }
+    try { token = jwt.sign({userId: existingUser.id, email: existingUser.email}, key) }
     catch (err) {
         console.log(err)
         res.status(500).json({message: commons.token_failed})

@@ -7,6 +7,8 @@ import { userAttemptsModel } from '../models/user_attempts.js'
 
 //dotenv.config()
 
+const key='eoifkjefeu6193611986';
+
 const signup = async (req, res, next) => {
 
     let token
@@ -62,7 +64,7 @@ const signup = async (req, res, next) => {
         return next()
     }
 
-    try { token = jwt.sign({userId: createdUser.id, email: createdUser.email}, process.env.TOKEN_KEY) }
+    try { token = jwt.sign({userId: createdUser.id, email: createdUser.email}, key) }
     catch (err) {
         res.status(500).json({message: commons.token_failed})
         return next()

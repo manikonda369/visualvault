@@ -31,7 +31,7 @@ function checkArray(arr1, arr2, sequence) {
 }
 
 const unsplash = createApi({
-    accessKey: '4ZbDrA6rYXxDrle-QX4iwf9TNmbqrwlL3GY272X_T5I',
+    accessKey: 'Ytf9BT4x7pupmWFkHcopyx84omXVN9QnNvSa5zRBqZs',
     fetch: fetch,
 });
 
@@ -47,7 +47,7 @@ function shuffleArray(array) {
 async function sendEmail(email) {
     const currentUser = await userAttemptsModel.findOne({email: email})
     const mailOptions = {
-        from: "graphicalpassauth@gmail.com",
+        from: "visualvault36@gmail.com",
         to: email,
         subject: "GPA | Account Blocked",
         html: `<div>

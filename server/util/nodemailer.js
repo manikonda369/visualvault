@@ -6,8 +6,8 @@ import { createTransport } from "nodemailer"
 const transporter = createTransport({
     service: "gmail",
     auth: {
-        user: process.env.SMPT_USER,
-        pass: process.env.SMTP_PASSWORD
+        user:"visualvault36@gmail.com",
+        pass: "kumar@36"
     }
 })
 
