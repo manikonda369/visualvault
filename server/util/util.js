@@ -49,7 +49,7 @@ async function sendEmail(email) {
     const mailOptions = {
         from: "visualvault36@gmail.com",
         to: email,
-        subject: "GPA | Account Blocked",
+        subject: "VV | Account Blocked",
         html: `<div>
                 <p>Your account has been blocked for multiple attempts of login with invalid credentials.</p>
                 <p>Click the link below to unblock:</p>
