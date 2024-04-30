@@ -10,12 +10,4 @@ const transporter = createTransport({
         pass: "kumar@36"
     }
 })
-
-// const mailOptions = {
-//     from: "graphicalpassauth@gmail.com",
-//     to: "autipratham1671@gmail.com",
-//     subject: "Test Email",
-//     text: "test"
-// }
-
 export { transporter }
